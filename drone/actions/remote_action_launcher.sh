@@ -11,4 +11,4 @@ ARGS=${@:8}
 
 REMOTE_ACTION='$(bash -x '${REMOTE_SCRIPT}' '${ARGS}' > '${STDOUT_FILE}' 2> '${STDERR_FILE}' && rm -f '${PID_FILE}') & echo $! > '${PID_FILE}''
 
-ssh -n -f -i ${SSH_KEY} ${USERNAME}@${REMOTE_HOST} "${REMOTE_ACTION}"
+ssh -n -f -i ${SSH_KEY} -o ConnectTimeout=5 ${USERNAME}@${REMOTE_HOST} "${REMOTE_ACTION}"

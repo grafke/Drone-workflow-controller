@@ -171,7 +171,7 @@ function getButtonType(status) {
         } else if (status == 'running') {
             return "button dropdown tiny";
         } else if (status == 'ready') {
-            return "button dropdown tiny";
+            return "button round dropdown tiny";
         } else {
             return "disabled button"
         }

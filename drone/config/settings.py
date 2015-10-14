@@ -26,7 +26,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Scheduler
-schedule_interval_seconds = 60
+schedule_interval_seconds = 2
 
 supported_dependencies = ['job_completed']
 supported_job_types = ['ssh', 'emr']
@@ -35,4 +35,4 @@ supported_job_types = ['ssh', 'emr']
 host_ip = '0.0.0.0'
 port = 8080
 user_reloader = False
-debug = True
+debug = False

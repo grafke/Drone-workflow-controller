@@ -32,4 +32,4 @@ def update_task(job_id, schedule_time, status):
 
 
 if __name__ == '__main__':
-    api_app.run(debug=True, use_reloader=False, host=host_ip, port=port)
+    api_app.run(debug=False, use_reloader=False, host=host_ip, port=port)

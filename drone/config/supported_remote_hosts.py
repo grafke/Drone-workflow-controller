@@ -1,15 +1,15 @@
 remote_servers = {
     'test_server': {
         'ssh_details': {
-            'username': '',
-            'password': '',
-            'ssh_key': 'id_rsa',
-            'host': ''
+            'username': 'pauliusklyvis',
+            'password': 'miskas',
+            'ssh_key': '/Users/pauliusklyvis/.ssh/id_rsa',
+            'host': 'localhost'
         },
         'logging': {
-            'stdout_log_dir': '/var/log/drone/',
-            'stderr_log_dir': '/var/log/drone/',
-            'pid_file_dir': '/var/run/drone/'
+            'stdout_log_dir': '/tmp/',
+            'stderr_log_dir': '/tmp/',
+            'pid_file_dir': '/tmp/'
         }
     }
 }
