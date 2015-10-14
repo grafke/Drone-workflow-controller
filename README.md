@@ -43,6 +43,10 @@ settings.py - main configuration file. There are a few parameters to configure. 
     host_ip - ip address for Drone API
     port - port for Drone API
 
+Drone does not require a restart when you deploy new job configuration files. 
+It parses the job configuration files every <schedule_interval_seconds> seconds. 
+Restart is required only after changes are made in settings.py, supported_remote_hosts.py, or supported_emr_clusters.py.
+
 Job configuration
 ----------------
 
@@ -121,7 +125,7 @@ supported_emr_clusters.py -  this configuration file stores information about su
         }
     ]
 
-remote_jobs_config - this file stores the configuration of you remote jobs.
+remote_jobs_config.py - this file stores the configuration of you remote jobs.
 
     {
       "jobs": [
