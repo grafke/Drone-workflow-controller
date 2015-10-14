@@ -72,6 +72,12 @@ connect to a remote host.
         ...
     } 
 
+    stdout_log_dir, stderr_log_dir, and pid_file_dir have to be writable. Drone writes the pid of a remote process in 
+    the pid file. Drone uses the remote pid file to check the status of the remote job. If it's missing, Drone marks the
+     job as succeeded. If it's present, but the process of that pid is not running, Drone marks the
+     job as failed. If the remote pid directory is not writable, Drone will not be able to read a pid file and will mark 
+      the remote job as succeeded. Drone does not validate remote environment configuration.
+    
 supported_emr_clusters.py -  this configuration file stores information about supported EMR clusters.
     
     emr_clusters = [
