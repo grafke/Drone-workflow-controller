@@ -1,6 +1,6 @@
 from pprint import pprint
 from unittest import TestCase
-from drone_app.utils.config_loader import get_config
+from drone.utils.config_loader import get_config
 import settings
 
 __author__ = 'pauliusklyvis'

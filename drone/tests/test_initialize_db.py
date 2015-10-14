@@ -1,7 +1,7 @@
 import os
 from pprint import pprint
 from unittest import TestCase
-from drone_app.metadata.metadata import initialize_db, insert_dummy_job, read_all_jobs
+from drone.metadata.metadata import initialize_db, insert_dummy_job, read_all_jobs
 import settings
 
 __author__ = 'pauliusklyvis'

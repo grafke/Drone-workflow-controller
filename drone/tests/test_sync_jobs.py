@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from drone_app.bin.initialize import sync_jobs
-from drone_app.metadata.metadata import initialize_db, read_all_jobs
+from drone.bin.initialize import sync_jobs
+from drone.metadata.metadata import initialize_db, read_all_jobs
 import settings
 
 
