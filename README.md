@@ -37,10 +37,17 @@ All configuration files are stored in drone/config.
 
 settings.py - main configuration file. There are a few parameters to configure. For example:
 
-    schedule_interval_seconds - defines how often Drone checks the status of jobs.
+    schedule_interval_seconds - defines how often Drone checks the status of jobs and re-reads job configuration files.
     metadata_history_days - defines how long to keep job history in the database 
+    
+    host_ip - ip address for Drone API
+    port - port for Drone API
 
-supported_remote_hosts.py - this configuration file stores information about remote hosts.
+Job configuration
+----------------
+
+supported_remote_hosts.py - this configuration file stores information about remote hosts. Drone uses SSH to
+connect to a remote host.
 
     remote_servers = {
         'test_server_A': {
@@ -57,8 +64,8 @@ supported_remote_hosts.py - this configuration file stores information about rem
             }
         },
         ...
-    }
-    
+    } 
+
 supported_emr_clusters.py -  this configuration file stores information about supported EMR clusters.
     
     emr_clusters = [
@@ -114,9 +121,41 @@ supported_emr_clusters.py -  this configuration file stores information about su
         }
     ]
 
+remote_jobs_config - this file stores the configuration of you remote jobs.
+
+    {
+      "jobs": [
+        {
+          "id": "test_remote_action",
+          "type": "ssh",
+          "remote_server_id": "test_server",
+          "start_time": "2015-10-05T00:00:00",
+          "delay_minutes": "0",
+          "interval_minutes": "1440",
+          "retry": "3",
+          "dependencies": [
+            {
+              "job_completed": {
+                "id": "test_remote_action",
+                "last_schedule_time_interval_minutes": "1440"
+              }
+            }
+          ],
+          "remote_action": {
+            "script": "/home/leos/script.sh",
+            "args": [
+              "dummy_arg", "dummy_arg_2"
+            ]
+          }
+        }
+      ]
+    }
+    
+    
+
 aws_jobs_config.json - this file stores the configuration of your EMR jobs.
 
-remote_jobs_config - this file stores the configuration of you remote jobs.
+    empty
 
 ------------------------------------------------
 # Drone-web
@@ -125,6 +164,14 @@ Drone-web is a web-ui to monitor and manage Drone jobs.
 
 ![img] (http://i.imgur.com/X5BYvBx.png)
 
+Drone-web can be served from a different server than Drone.
+
+# Configuration
+
+Drone-web needs a URL for Drone API.
+
+    var host = 'http://127.0.0.1:8080';
+    
 
 ## Features
 - ** Change job status to SUCCEEDED, READY, NOT_READY, or FAILED
