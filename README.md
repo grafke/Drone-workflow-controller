@@ -190,11 +190,11 @@ Drone-web needs a URL for Drone API.
     
 # Job status
 
-Not ready - grey
-Ready - round blue
-Running - blue
-Succeeded - green
-Failed - red
+- Not ready - grey
+- Ready - round blue
+- Running - blue
+- Succeeded - green
+- Failed - red
 
 # Features
 - ** Change job status to SUCCEEDED, READY, NOT_READY, or FAILED
