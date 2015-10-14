@@ -1,0 +1,37 @@
+{
+    "jobs":
+        [
+          {
+            "id": "test_aws_action",
+            "type": "emr",
+            "emr_cluster_id": "test_cluster",
+            "start_time": "2015-10-05T00:00:00",
+            "delay_minutes": "",
+            "interval_minutes": "1440",
+            "retry": "",
+            "dependencies":
+              [
+                {
+                  "job_completed":
+                    {
+                      "id": "test_remote_action",
+                      "last_schedule_time_interval_minutes": "1440"
+                    }
+                }
+              ],
+            "remote_action":
+                [
+                    {
+                        "hive_script": "/home/leos/script.sh",
+                        "args": ["dummy_arg"]
+                    },
+                    {
+                        "hive_script": "/home/leos/script.sh",
+                        "args": ["dummy_arg_2"]
+                    }
+                ]
+          }
+        ]
+}
+
+

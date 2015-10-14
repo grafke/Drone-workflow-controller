@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+    <script src="./js/foundation/foundation.js"></script>
+    <script src="./js/foundation/foundation.dropdown.js"></script>
+    <script src="./js/drone-core.js"></script>
+</head>
+    <link rel="stylesheet" type="text/css" href="./css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="./css/drone.css">
+
+    <script type='text/javascript'>
+
+    var host = 'http://127.0.0.1:8080';
+
+    $(document).ready(function() {
+
+
+        var jsonData, columns, columnDefinitions, jobInfo;
+
+        $.ajax({
+            type: 'GET',
+            url: host + "/list_jobs",
+            success: function(data) {
+
+                jsonData = JSON.parse(data);
+                columns = getColumns(jsonData);
+                columnDefinitions = getColumnDefinitions(jsonData);
+                jobInfo = getJobInfo(jsonData);
+
+                $('#drone').dataTable({
+                    "bDeferRender": true,
+                    "bInfo" : false,
+                    "bDestroy" : true,
+                    "bFilter" : true,
+                    "bPagination" : false,
+                    "aaData": jobInfo,
+                    "aoColumns": columns,
+                    "aoColumnDefs": columnDefinitions
+                });
+
+                $(document).foundation();
+            }
+        });
+
+    });
+
+    </script>
+
+<body>
+<h3 style="width:100%; text-align:center">Drone</h3>
+
+    <table id="drone"></table>
+
+<div id="copyright">© Paulius Klyvis</div>
+</body>
+</html>
