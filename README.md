@@ -188,6 +188,13 @@ Drone-web needs a URL for Drone API.
 
     var host = 'http://127.0.0.1:8080';
     
+# Job status
+
+Not ready - grey
+Ready - round blue
+Running - blue
+Succeeded - green
+Failed - red
 
 # Features
 - ** Change job status to SUCCEEDED, READY, NOT_READY, or FAILED
