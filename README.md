@@ -31,12 +31,92 @@ Running Drone is super easy:
     python bin/drone_app.py
 
 Configure Drone
+----------------
 
 All configuration files are stored in drone/config.
-settings.py - main configuration file (usually default settings are fine)
-supported_remote_hosts.py - this configuration file stores information about remote hosts 
-    that will be used to run remote jobs
-...to be continued...
+
+settings.py - main configuration file. There are a few parameters to configure. For example:
+
+    schedule_interval_seconds - defines how often Drone checks the status of jobs.
+    metadata_history_days - defines how long to keep job history in the database 
+
+supported_remote_hosts.py - this configuration file stores information about remote hosts.
+
+    remote_servers = {
+        'test_server_A': {
+            'ssh_details': {
+                'username': 'username',
+                'password': 'password',
+                'ssh_key': 'id_rsa file path',
+                'host': ''
+            },
+            'logging': {
+                'stdout_log_dir': '/var/log/drone/',
+                'stderr_log_dir': '/var/log/drone/',
+                'pid_file_dir': '/var/run/drone/'
+            }
+        },
+        ...
+    }
+    
+supported_emr_clusters.py -  this configuration file stores information about supported EMR clusters.
+    
+    emr_clusters = [
+        {
+            "id": "test_cluster",
+            "aws_credentials":
+                {
+                    "access_key": "",
+                    "secret_key": "",
+                    "region": ""
+                },
+            "ec2_key_name": "",
+            "ami_version": "",
+            "hadoop_version": "",
+            "hive_version": "",
+            "log_uri": "",
+            "debug": "",
+            "instance_groups":
+                {
+                    "master":
+                        {
+                            "type": "",
+                            "count": "",
+                            "bid_price": ""
+                        },
+                    "core":
+                        {
+                            "type": "",
+                            "count": "",
+                            "bid_price": ""
+                        },
+                    "task":
+                        {
+                            "type": "",
+                            "count": "",
+                            "bid_price": ""
+                        }
+                },
+            "bootstrap_steps":
+                [
+                    {
+                        "script": "",
+                        "args": []
+                    }
+                ],
+            "hive_args":
+                [
+                    {
+                        "name": "",
+                        "value": ""
+                    }
+                ]
+        }
+    ]
+
+aws_jobs_config.json - this file stores the configuration of your EMR jobs.
+
+remote_jobs_config - this file stores the configuration of you remote jobs.
 
 ------------------------------------------------
 # Drone-web
