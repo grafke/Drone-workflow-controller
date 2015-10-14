@@ -50,6 +50,8 @@ Restart is required only after changes are made in settings.py, supported_remote
 Job configuration
 ----------------
 
+# Job environment
+
 supported_remote_hosts.py - this configuration file stores information about remote hosts. Drone uses SSH to
 connect to a remote host.
 
@@ -124,6 +126,8 @@ supported_emr_clusters.py -  this configuration file stores information about su
                 ]
         }
     ]
+
+# Job definition
 
 remote_jobs_config.py - this file stores the configuration of you remote jobs.
 
