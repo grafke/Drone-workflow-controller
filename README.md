@@ -6,20 +6,20 @@ Workflows are defined in JSON.
 Use Drone to create workflows as directed acyclic graphs (DAGs) of jobs.
 The Drone scheduler executes your jobs on a remote resource (on EMR, EC2, or a remote host via SSH).
 
-Design Principles
-----------------
+# Design Principles
+
 * **Simple**: based on JSON
 * **Extensible**: component-based approach
 * **Transparent**: state stored in a SQLite database
 * **Reliable**: stateless components
 * **Feature-rich**: auto-retries, runtime alternations
 
-TO-DO
-----------------
+# TO-DO
+
 * Per-job emails
 
-Quick start
-----------------
+# Quick start
+
 
     git clone https://github.com/grafke/Drone-workflow-controller
     cd Drone-workflow-controller
@@ -30,8 +30,8 @@ Running Drone is super easy:
     
     python bin/drone_app.py
 
-Configure Drone
-----------------
+# Configure Drone
+
 
 All configuration files are stored in drone/config.
 
@@ -47,10 +47,10 @@ Drone does not require a restart after new job configuration files are deployed.
 Jobs configuration files are parsed every __schedule_interval_seconds__ seconds. 
 Restart is required only after changes are made in settings.py, supported_remote_hosts.py, or supported_emr_clusters.py.
 
-Job configuration
-----------------
+# Job configuration
 
-# Job environment
+Job environment
+----------------
 
 supported_remote_hosts.py - this configuration file stores information about remote hosts. Drone uses SSH to
 connect to a remote host.
@@ -127,7 +127,8 @@ supported_emr_clusters.py -  this configuration file stores information about su
         }
     ]
 
-# Job definition
+Job definition
+----------------
 
 remote_jobs_config.py - this file stores the configuration of you remote jobs.
 
@@ -166,6 +167,7 @@ aws_jobs_config.json - this file stores the configuration of your EMR jobs.
     empty
 
 ------------------------------------------------
+
 # Drone-web
 
 Drone-web is a web-ui to monitor and manage Drone jobs.
@@ -181,13 +183,13 @@ Drone-web needs a URL for Drone API.
     var host = 'http://127.0.0.1:8080';
     
 
-## Features
+# Features
 - ** Change job status to SUCCEEDED, READY, NOT_READY, or FAILED
 - ** Report number of runs for each job (number displayed in a cell)
 - ** Filter job list (Search field)
 - ** Sort the output by any column
 
-## TO-DO
+# TO-DO
 - ** Allow to change a job status for several jobs (mini batches)
 - ** Report running time for running jobs
 - ** Report execution time for finished, and failed jobs.
