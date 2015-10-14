@@ -18,10 +18,30 @@ TO-DO
 ----------------
 * Per-job emails
 
+Quick start
+----------------
+
+    git clone https://github.com/grafke/Drone-workflow-controller
+    cd Drone-workflow-controller
+
+Drone uses SQLite as persistent storage. 
+
+Running Drone is super easy:
+    
+    python bin/drone_app.py
+
+Configure Drone
+
+All configuration files are stored in drone/config.
+settings.py - main configuration file (usually default settings are fine)
+supported_remote_hosts.py - this configuration file stores information about remote hosts 
+    that will be used to run remote jobs
+...to be continued...
+
 ------------------------------------------------
 # Drone-web
 
-Drone-web is a web-ui to monitor and manage [Drone](https://github.com/grafke/Drone) jobs.
+Drone-web is a web-ui to monitor and manage Drone jobs.
 
 ![img] (http://i.imgur.com/X5BYvBx.png)
 
