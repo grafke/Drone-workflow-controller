@@ -19,7 +19,7 @@ setup(
     include_package_data=True,
 
     # Details
-    url="...",
+    url="https://github.com/grafke/Drone-workflow-controller",
 
     #
     # license="LICENSE.txt",
