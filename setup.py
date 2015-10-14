@@ -29,6 +29,7 @@ setup(
 
     # Dependent packages (distributions)
     install_requires=[
-        "flask",
+        "Flask",
+        "setuptools"
     ],
 )
