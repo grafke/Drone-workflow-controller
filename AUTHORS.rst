@@ -1,1 +1,1 @@
-* Paulius KLyvis <paul@foje.lt>
+* Paulius Klyvis <paul@foje.lt>
