@@ -1,2 +1,3 @@
 Flask
 setuptools
+boto3

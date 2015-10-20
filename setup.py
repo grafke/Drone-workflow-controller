@@ -30,6 +30,7 @@ setup(
     # Dependent packages (distributions)
     install_requires=[
         "Flask",
-        "setuptools"
+        "setuptools",
+        "boto3"
     ],
 )
