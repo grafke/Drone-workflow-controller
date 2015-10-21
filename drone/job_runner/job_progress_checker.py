@@ -69,6 +69,8 @@ def check_emr_task(job_config, schedule_time, uid, settings):
         set_failed(job_id, schedule_time, db_name=settings.metadata)
         settings.logger.warning('%s %s has failed' % (job_id, schedule_time))
         return
+    else:
+        raise
 
 
 task_checker = {'ssh': check_ssh_task_status,

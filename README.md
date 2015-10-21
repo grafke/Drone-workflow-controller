@@ -45,7 +45,7 @@ settings.py - main configuration file. There are a few parameters to configure. 
 
 Drone does not require a restart after new job configuration files are deployed. 
 Jobs configuration files are parsed every __schedule_interval_seconds__ seconds. 
-Restart is required only after changes are made in settings.py, supported_remote_hosts.py, or supported_emr_clusters.py.
+Restart is required only after changes are made in settings.py or supported_remote_hosts.py.
 
 # Job configuration
 
@@ -78,65 +78,12 @@ connect to a remote host.
      job as failed. If the remote pid directory is not writable, Drone will not be able to read a pid file and will mark 
       the remote job as succeeded. Drone does not validate remote environment configuration.
     
-supported_emr_clusters.py -  this configuration file stores information about supported EMR clusters.
-    
-    emr_clusters = [
-        {
-            "id": "test_cluster",
-            "aws_credentials":
-                {
-                    "access_key": "",
-                    "secret_key": "",
-                    "region": ""
-                },
-            "ec2_key_name": "",
-            "ami_version": "",
-            "hadoop_version": "",
-            "hive_version": "",
-            "log_uri": "",
-            "debug": "",
-            "instance_groups":
-                {
-                    "master":
-                        {
-                            "type": "",
-                            "count": "",
-                            "bid_price": ""
-                        },
-                    "core":
-                        {
-                            "type": "",
-                            "count": "",
-                            "bid_price": ""
-                        },
-                    "task":
-                        {
-                            "type": "",
-                            "count": "",
-                            "bid_price": ""
-                        }
-                },
-            "bootstrap_steps":
-                [
-                    {
-                        "script": "",
-                        "args": []
-                    }
-                ],
-            "hive_args":
-                [
-                    {
-                        "name": "",
-                        "value": ""
-                    }
-                ]
-        }
-    ]
 
 Job definition
 ----------------
 
-remote_jobs_config.py - this file stores the configuration of you remote jobs.
+remote_jobs_config.py - this file stores the configuration of you remote jobs. 
+
 
     {
       "jobs": [
@@ -168,9 +115,146 @@ remote_jobs_config.py - this file stores the configuration of you remote jobs.
     
     
 
-aws_jobs_config.json - this file stores the configuration of your EMR jobs.
+aws_jobs_config.json - this file stores the configuration of your EMR jobs. More information can be found: 
+    http://boto3.readthedocs.org/en/latest/reference/services/emr.html#EMR.Client.run_job_flow
 
-    empty
+    {
+        "jobs": [
+            {
+                "id": "string",
+                "type": "emr",
+                "start_time": "2015-10-05T00:00:00",
+                "delay_minutes": "",
+                "interval_minutes": "1440",
+                "retry": "2",
+                "dependencies":
+                  [
+                    {
+                      "job_completed":
+                        {
+                          "id": "test_remote_action",
+                          "last_schedule_time_interval_minutes": "1440"
+                        }
+                    }
+                  ],
+                "LogUri": "string",
+                "AdditionalInfo": "string",
+                "AmiVersion": "string",
+                "ReleaseLabel": "string",
+                "Instances": {
+                    "MasterInstanceType": "string",
+                    "SlaveInstanceType": "string",
+                    "InstanceCount": 123,
+                    "InstanceGroups": [
+                        {
+                            "Name": "string",
+                            "Market": "ON_DEMAND"|"SPOT",
+                            "InstanceRole": "MASTER"|"CORE"|"TASK",
+                            "BidPrice": "string",
+                            "InstanceType": "string",
+                            "InstanceCount": 123,
+                            "Configurations": [
+                                {
+                                    "Classification": "string",
+                                    "Configurations": {"... recursive ..."},
+                                    "Properties": {
+                                        "string": "string"
+                                    }
+                                },
+                            ]
+                        },
+                    ],
+                    "Ec2KeyName": "string",
+                    "Placement": {
+                        "AvailabilityZone": "string"
+                    },
+                    "KeepJobFlowAliveWhenNoSteps": True|False,
+                    "TerminationProtected": True|False,
+                    "HadoopVersion": "string",
+                    "Ec2SubnetId": "string",
+                    "EmrManagedMasterSecurityGroup": "string",
+                    "EmrManagedSlaveSecurityGroup": "string",
+                    "AdditionalMasterSecurityGroups": [
+                        "string",
+                    ],
+                    "AdditionalSlaveSecurityGroups": [
+                        "string",
+                    ]
+                },
+                "Steps": [
+                    {
+                        "Name": "string",
+                        "ActionOnFailure": "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+                        "HadoopJarStep": {
+                            "Properties": [
+                                {
+                                    "Key": "string",
+                                    "Value": "string"
+                                },
+                            ],
+                            "Jar": "string",
+                            "MainClass": "string",
+                            "Args": [
+                                "string",
+                            ]
+                        }
+                    },
+                ],
+                "BootstrapActions": [
+                    {
+                        "Name": "string",
+                        "ScriptBootstrapAction": {
+                            "Path": "string",
+                            "Args": [
+                                "string",
+                            ]
+                        }
+                    },
+                ],
+                "SupportedProducts": [
+                    "string",
+                ],
+                "NewSupportedProducts": [
+                    {
+                        "Name": "string",
+                        "Args": [
+                            "string",
+                        ]
+                    },
+                ],
+                "Applications": [
+                    {
+                        "Name": "string",
+                        "Version": "string",
+                        "Args": [
+                            "string",
+                        ],
+                        "AdditionalInfo": {
+                            "string": "string"
+                        }
+                    },
+                ],
+                "Configurations": [
+                    {
+                        "Classification": "string",
+                        "Configurations": {"... recursive ..."},
+                        "Properties": {
+                            "string": "string"
+                        }
+                    },
+                ],
+                "VisibleToAllUsers": True|False,
+                "JobFlowRole": "string",
+                "ServiceRole": "string",
+                "Tags": [
+                    {
+                        "Key": "string",
+                        "Value": "string"
+                    },
+                ]
+            },
+        ]
+    }
 
 ------------------------------------------------
 
