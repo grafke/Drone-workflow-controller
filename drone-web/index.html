@@ -30,6 +30,8 @@
                 columnDefinitions = getColumnDefinitions(jsonData);
                 jobInfo = getJobInfo(jsonData);
 
+                $.fn.dataTableExt.sErrMode = 'console';
+
                 $('#drone').dataTable({
                     "bDeferRender": true,
                     "bInfo" : false,

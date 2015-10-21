@@ -26531,3 +26531,6 @@
 2015-10-14 16:39:38,431 - drone.config.settings - INFO - Starting job "test_remote_action" "2015-10-08T00:00:00"
 2015-10-14 16:39:38,437 - drone.config.settings - INFO - Started job "test_remote_action" "2015-10-08T00:00:00"
 2015-10-14 16:39:40,622 - drone.config.settings - WARNING - test_remote_action 2015-10-08T00:00:00 has failed
+2015-10-21 14:28:39,827 - drone.config.settings - INFO - Starting job "test_emr_job" "2015-10-23T00:00:00"
+2015-10-21 14:28:41,206 - drone.config.settings - INFO - Started job "test_emr_job" "2015-10-23T00:00:00"
+2015-10-21 14:30:12,200 - drone.config.settings - WARNING - test_emr_job 2015-10-23T00:00:00 has failed
