@@ -34,7 +34,7 @@ supported_job_types = ['ssh', 'emr']
 # web
 host_ip = '0.0.0.0'
 port = 8080
-user_reloader = False
+use_reloader = False
 debug = False
 
 # EMR

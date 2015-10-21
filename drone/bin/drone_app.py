@@ -17,7 +17,7 @@ def main(settings):
 
 if __name__ == "__main__":
     api_thread = Thread(target=api_app.run,
-                        kwargs={'debug': settings.debug, 'use_reloader': settings.user_reloader,
+                        kwargs={'debug': settings.debug, 'use_reloader': settings.use_reloader,
                                 'host': settings.host_ip, 'port': settings.port})
     api_thread.setDaemon(True)
 
