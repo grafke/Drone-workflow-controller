@@ -17,8 +17,8 @@ def launch_emr_task(job_config, schedule_time, settings):
         Applications=job_config.get('Applications', []),
         Configurations=job_config.get('Configurations', []),
         VisibleToAllUsers=True if job_config.get('VisibleToAllUsers') == "True" else False,
-        JobFlowRole=job_config.get('JobFlowRole', 'AmazonElasticMapReduceRole'),
-        ServiceRole=job_config.get('ServiceRole', 'EMR_EC2_DefaultRole')
+        JobFlowRole=job_config.get('JobFlowRole', settings.job_flow_role),
+        ServiceRole=job_config.get('ServiceRole', settings.service_role)
     )
 
     success = aws_response.get('ResponseMetadata').get('HTTPStatusCode') == 200

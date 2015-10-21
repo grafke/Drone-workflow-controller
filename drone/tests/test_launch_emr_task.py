@@ -12,5 +12,5 @@ class TestLaunch_emr_task(TestCase):
 
         config = get_config(settings.aws_jobs_config, settings.aws_jobs_config_schema)
         for job_config in config.get('jobs'):
-            result = launch_emr_task(job_config, 2, 3)
+            result = launch_emr_task(job_config, 2, settings)
             print(result)

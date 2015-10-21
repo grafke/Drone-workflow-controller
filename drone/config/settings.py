@@ -36,3 +36,7 @@ host_ip = '0.0.0.0'
 port = 8080
 user_reloader = False
 debug = False
+
+# EMR
+job_flow_role = 'AmazonElasticMapReduceRole'
+service_role = 'EMR_EC2_DefaultRole'
