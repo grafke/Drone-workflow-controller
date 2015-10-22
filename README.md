@@ -106,7 +106,7 @@ remote_jobs_config.py - this file stores the configuration of you remote jobs.
             }
           ],
           "remote_action": {
-            "script": "/home/leos/script.sh",
+            "script": "/home/test/script.sh",
             "args": [
               "dummy_arg", "dummy_arg_2"
             ]
