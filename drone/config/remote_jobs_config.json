@@ -1,28 +1,6 @@
 {
   "jobs": [
-    {
-      "id": "test_remote_action",
-      "type": "ssh",
-      "remote_server_id": "test_server",
-      "start_time": "2015-10-21T00:00:00",
-      "delay_minutes": "",
-      "interval_minutes": "1440",
-      "retry": "3",
-      "dependencies": [
-        {
-          "job_completed": {
-            "id": "test_remote_action",
-            "last_schedule_time_interval_minutes": "1440"
-          }
-        }
-      ],
-      "remote_action": {
-        "script": "/home/leos/script.sh",
-        "args": [
-          "dummy_arg", "dummy_arg_2"
-        ]
-      }
-    }
+    {}
   ]
 }
 

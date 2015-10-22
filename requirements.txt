@@ -1,3 +1,4 @@
 Flask
 setuptools
 boto3
+flask-cors

@@ -23,19 +23,21 @@ The Drone scheduler executes your jobs on a remote resource (on EMR, EC2, or a r
 
     git clone https://github.com/grafke/Drone-workflow-controller
     cd Drone-workflow-controller
+    # nano drone/config/settings.py #only if you really want to change something
+    python setup.py install
 
 Drone uses SQLite as persistent storage. 
 
 Running Drone is super easy:
     
-    python bin/drone_app.py
+    drone_app.py
 
 # Configure Drone
 
 
 All configuration files are stored in drone/config.
 
-settings.py - main configuration file. There are a few parameters to configure. For example:
+settings.py - main configuration file. There are a few parameters you may want to configure. For example:
 
     schedule_interval_seconds - defines how often Drone checks the status of jobs and re-reads job configuration files.
     metadata_history_days - defines how long to keep job history in the database 
@@ -270,7 +272,7 @@ Drone-web can be served from a different server than Drone.
 
 Drone-web needs a URL for Drone API.
 
-    var host = 'http://127.0.0.1:8080';
+    var host = 'http://drone_host:8080';
     
 # Job status
 

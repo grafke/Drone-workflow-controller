@@ -6,6 +6,7 @@ from drone.config import settings
 from drone.job_runner.job_runner import process
 from drone.metadata.metadata import initialize_db
 
+
 def main(settings):
     initialize_db(db_name=settings.metadata)
     while True:
@@ -18,7 +19,7 @@ def main(settings):
 if __name__ == "__main__":
     api_thread = Thread(target=api_app.run,
                         kwargs={'debug': settings.debug, 'use_reloader': settings.use_reloader,
-                                'host': settings.host_ip, 'port': settings.port})
+                                'host': settings.host_ip, 'port': settings.port, 'threaded': True})
     api_thread.setDaemon(True)
 
     main_thread = Thread(target=main, args=[settings])
