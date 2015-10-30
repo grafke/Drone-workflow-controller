@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from drone.config.supported_remote_hosts import remote_servers
-from drone.utils.helpers import job_id_generator
+from drone.utils.helpers import job_id_generator, parse_schedule_time
 
 
 def ssh_task_cmd_generator(remote_action_script, remote_action_script_args, remote_server_config, unique_job_id,
@@ -19,7 +19,7 @@ def ssh_task_cmd_generator(remote_action_script, remote_action_script_args, remo
                                           unique_job_id + '.pid')
 
     if remote_server_ssh_key:
-        return [os.path.join(os.path.dirname(os.path.realpath(__file__)), 'remote_action_launcher.sh'),
+        return ['/usr/local/bin/remote_action_launcher.sh',
                 remote_server_ssh_key, remote_server_username,
                 remote_server_host, remote_action_script, remote_server_stdout_file,
                 remote_server_stderr_file, remote_server_pid_file] + remote_action_script_args, remote_server_pid_file
@@ -35,7 +35,9 @@ def launch_ssh_task(job_config, schedule_time, settings):
     remote_server_config = remote_servers.get(remote_server_id)
 
     remote_action_script = job_config.get('remote_action').get('script')
-    remote_action_script_args = job_config.get('remote_action').get('args')
+    remote_action_script_input_args = job_config.get('remote_action').get('args')
+
+    remote_action_script_args = [parse_schedule_time(arg, schedule_time) for arg in remote_action_script_input_args]
 
     local_action_cmd, uid = ssh_task_cmd_generator(remote_action_script, remote_action_script_args,
                                                    remote_server_config, unique_job_id, settings)

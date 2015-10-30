@@ -1,7 +1,19 @@
 {
   "jobs": [
-    {}
+    {
+      "id": “test”,
+      "type": "ssh",
+      "remote_server_id": “”,
+      "start_time": "",
+      "delay_minutes": "",
+      "interval_minutes": "",
+      "retry": "0",
+      "remote_action": {
+        "script": "",
+        "args": [
+          "",
+        ]
+      }
+    }
   ]
 }
-
-

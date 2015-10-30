@@ -15,6 +15,8 @@ def process(job_config, settings):
 
         if status == job_status.get('failed'):
             if (int(job_config.get('retry')) if job_config.get('retry') else 0) > int(runs):
+                settings.logger.debug(
+                    '%s runs %s. set retries %s.' % (job_config.get('id'), runs, job_config.get('retry')))
                 if dependencies_are_met(job_config, schedule_time, settings):
                     set_ready(job_config.get('id'), schedule_time, db_name=settings.metadata)
                     settings.logger.info('Job "%s" "%s" set as ready' % (job_config.get('id'), schedule_time))
@@ -60,4 +62,3 @@ def run(job_config, schedule_time, settings):
     else:
         set_failed(job_config.get('id'), schedule_time, db_name=settings.metadata)
         settings.logger.warning('Failed to start job "%s" "%s"' % (job_config.get('id'), schedule_time))
-

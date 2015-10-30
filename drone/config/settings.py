@@ -16,7 +16,7 @@ metadata_future_days = 7
 
 # Logging
 log_file = '/var/drone/logs/application.log'
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(filename=log_file, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(log_file)

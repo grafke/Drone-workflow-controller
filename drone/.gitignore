@@ -3,6 +3,4 @@
 */*/*.pyc
 */*/*/*.pyc
 metadata/*.db
-tests
-tests/*
 logs/*

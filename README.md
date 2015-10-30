@@ -21,7 +21,7 @@ The Drone scheduler executes your jobs on a remote resource (on EMR, EC2, or a r
 # Quick start
 
 
-    git clone https://github.com/grafke/Drone-workflow-controller.git
+    git clone https://github.com/grafke/Drone-workflow-controller
     cd Drone-workflow-controller
     # nano drone/config/settings.py #only if you really want to change something
     python setup.py install
@@ -106,7 +106,7 @@ remote_jobs_config.py - this file stores the configuration of you remote jobs.
             }
           ],
           "remote_action": {
-            "script": "/home/test/script.sh",
+            "script": "/home/leos/script.sh",
             "args": [
               "dummy_arg", "dummy_arg_2"
             ]

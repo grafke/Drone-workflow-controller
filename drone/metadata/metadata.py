@@ -38,7 +38,7 @@ def read_all_jobs(db_name=None):
 
 @execute_db('Removing old entries...')
 def remove_old_data(days, db_name=None):
-    date_time = (datetime.datetime.now() - datetime.timedelta(days=days)).isoformat()
+    date_time = (datetime.datetime.now().date() - datetime.timedelta(days=days)).isoformat()
     return '''DELETE FROM job_status WHERE schedule_time < "%s";''' % date_time
 
 
@@ -73,7 +73,7 @@ def set_running(job_id, schedule_time, uid, db_name=None):
 
 
 @execute_db("List all jobs...")
-def get_all_job_ids(db_nam=None):
+def get_all_job_ids(db_name=None):
     return 'SELECT DISTINCT job_id from job_status;'
 
 
@@ -114,10 +114,4 @@ update_job_status = {'ready': set_ready,
                      'failed': set_failed,
                      'succeeded': set_succeeded}
 
-# initialize_db()
-# remove_old_data()
-# insert_dummy_job()
-# pprint(read_all_jobs())
-# set_running('test', '2015-10-03', '1234')
-# add_new_job('new_test_job2', '2015-10-09T01:22:22')
-# pprint(read_all_jobs())
+

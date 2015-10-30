@@ -17,8 +17,3 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
 .dataTables_wrapper .dataTables_filter input{
     margin-left:0px;
 }
-
-#copyright {
-    position: absolute;
-    bottom: 0;
-}
