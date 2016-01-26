@@ -1,9 +1,9 @@
 {
   "jobs": [
     {
-      "id": “test”,
+      "id": "test",
       "type": "ssh",
-      "remote_server_id": “”,
+      "remote_server_id": "",
       "start_time": "",
       "delay_minutes": "",
       "interval_minutes": "",
