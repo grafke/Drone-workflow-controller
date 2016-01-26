@@ -37,8 +37,7 @@ setup(
         "flask-cors"
     ],
     scripts=['drone/bin/drone_app.py'],
-    data_files=[('/etc/drone/', ['drone/config/aws_jobs_config.json']),
-                ('/etc/drone/', ['drone/config/remote_jobs_config.json']),
+    data_files=[('/etc/drone/', ['drone/config/remote_jobs_config.json']),
                 ('/etc/drone/', ['drone/config/aws_jobs_config.json.template']),
                 ('/usr/local/bin/', ['drone/actions/remote_action_launcher.sh']),
                 ('/var/www', ['drone-web/index.html']),
