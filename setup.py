@@ -15,7 +15,7 @@ setup(
     author_email="paul@foje.lt",
 
     # Packages
-    packages=find_packages(),
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
 
     # Include additional files into the package
     include_package_data=True,
