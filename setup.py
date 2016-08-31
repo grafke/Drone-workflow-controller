@@ -29,6 +29,8 @@ setup(
 
     # long_description=open("README.txt").read(),
 
+    zip_safe=False,
+
     # Dependent packages (distributions)
     install_requires=[
         "Flask",
