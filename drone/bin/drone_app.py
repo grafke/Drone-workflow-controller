@@ -29,8 +29,8 @@ if __name__ == "__main__":
         initialize_db(db_name=settings.metadata)
 
         with futures.ProcessPoolExecutor(max_workers=2) as executors:
-            web_api = executors.submit(web_runner)
-            drone_engine = executors.submit(drone_runner)
+            executors.submit(web_runner)
+            executors.submit(drone_runner)
 
     except KeyboardInterrupt:
         exit()
