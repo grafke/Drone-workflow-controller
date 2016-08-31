@@ -42,7 +42,6 @@ def launch_ssh_task(job_config, schedule_time, settings):
     local_action_cmd, uid = ssh_task_cmd_generator(remote_action_script, remote_action_script_args,
                                                    remote_server_config, unique_job_id, settings)
 
-    #subprocess.Popen(local_action_cmd)
     get_pid_id_proc = subprocess.Popen(local_action_cmd, stdout=subprocess.PIPE)
     exit_code = get_pid_id_proc.returncode
 

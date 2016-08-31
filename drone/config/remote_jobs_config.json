@@ -8,6 +8,14 @@
       "delay_minutes": "",
       "interval_minutes": "",
       "retry": "0",
+      "dependencies": [
+         {
+           "job_completed": {
+             "id": "example",
+             "last_schedule_time_interval_minutes": "1440"
+           }
+         }
+      ],
       "remote_action": {
         "script": "",
         "args": [

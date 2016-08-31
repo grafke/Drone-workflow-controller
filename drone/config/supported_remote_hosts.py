@@ -1,15 +1,15 @@
 remote_servers = {
     'example': {
         'ssh_details': {
-            'username': '',
+            'username': 'pklyvis',
             'password': '',
-            'ssh_key': '',
+            'ssh_key': '/Users/pklyvis/.ssh/id_rsa',
             'host': 'localhost'
         },
         'logging': {
-            'stdout_log_dir': '/tmp/example.stdout.log',
-            'stderr_log_dir': '/tmp/example.stderr.log',
-            'pid_file_dir': '/tmp/example.pid'
+            'stdout_log_dir': '/tmp',
+            'stderr_log_dir': '/tmp',
+            'pid_file_dir': '/tmp'
         }
     }
 }
