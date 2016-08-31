@@ -36,7 +36,7 @@ def all_jobs_from_db_to_json(db_result):
     active_job_ids = map(lambda x: x.get('id'), all_jobs)
 
     def get_status_name(status_id):
-        return [name for name, id in job_status.iteritems() if status_id == id][0]
+        return [name for name, id in job_status.items() if status_id == id][0]
 
     def format_row(row):
         return {
