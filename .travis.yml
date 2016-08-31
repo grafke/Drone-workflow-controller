@@ -7,8 +7,15 @@ python:
   - "3.4"
   - "3.5"
 # command to install dependencies
-install:
+before_install:
   - pip install -r requirements.txt
-  - sudo python setup.py -q install
+  - sudo mkdir /etc/drone
+  - sudo chown $(whoami) /etc/drone
+  - sudo mkdir -p /var/drone/metadata/
+  - sudo chown $(whoami) /var/drone/metadata/
+  - sudo mkdir -p /var/drone/logs/
+  - sudo chown $(whoami) /var/drone/logs/
+install:
+  - python setup.py -q install
 script:
   - nosetests --collect-only
