@@ -12,10 +12,15 @@ before_install:
   - sudo chown $(whoami) /etc/drone
   - sudo mkdir -p /usr/local/bin
   - sudo chown $(whoami) /usr/local/bin
-  - sudo mkdir -p /var/drone/metadata/
-  - sudo chown $(whoami) /var/drone/metadata/
-  - sudo mkdir -p /var/drone/logs/
-  - sudo chown $(whoami) /var/drone/logs/
+  - sudo mkdir -p /var/drone
+  - sudo chown $(whoami) /var/drone
+  - mkdir -p /var/drone/metadata/
+  - mkdir -p /var/drone/logs/
+  - sudo mkdir -p /var/www/
+  - sudo chown $(whoami) /var/www/
+  - mkdir -p /var/www/js/foundation
+  - mkdir -p /var/www/css
+  - mkdir -p /var/www/images
 install:
   - python setup.py -q install
 script:
