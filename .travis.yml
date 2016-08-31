@@ -6,11 +6,12 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-# command to install dependencies
 before_install:
   - pip install -r requirements.txt
   - sudo mkdir /etc/drone
   - sudo chown $(whoami) /etc/drone
+  - sudo mkdir /usr/local/bin
+  - sudo chown $(whoami) /usr/local/bin
   - sudo mkdir -p /var/drone/metadata/
   - sudo chown $(whoami) /var/drone/metadata/
   - sudo mkdir -p /var/drone/logs/
