@@ -1,5 +1,5 @@
 from time import sleep
-from threading import Thread
+from concurrent import futures
 from drone.api.api import api_app
 from drone.bin.initialize import sync_jobs
 from drone.config import settings
@@ -7,7 +7,7 @@ from drone.job_runner.job_runner import process
 from drone.metadata.metadata import initialize_db
 
 
-def run(settings):
+def drone_runner():
     while True:
         jobs_config = sync_jobs(settings)
         for job_config in jobs_config:
@@ -15,18 +15,24 @@ def run(settings):
         sleep(settings.schedule_interval_seconds)
 
 
-def main(settings):
-    initialize_db(db_name=settings.metadata)
-    run(settings)
+def web_runner(app=api_app):
+    app.run(debug=settings.debug,
+            use_reloader=settings.use_reloader,
+            host=settings.host_ip,
+            port=settings.port,
+            threaded=True,
+            processes=1)
+
 
 if __name__ == "__main__":
-    api_thread = Thread(target=api_app.run,
-                        kwargs={'debug': settings.debug, 'use_reloader': settings.use_reloader,
-                                'host': settings.host_ip, 'port': settings.port, 'threaded': True})
-    api_thread.setDaemon(True)
+    try:
+        initialize_db(db_name=settings.metadata)
 
-    main_thread = Thread(target=main, args=[settings])
-    main_thread.setDaemon(False)
+        with futures.ProcessPoolExecutor(max_workers=2) as executors:
+            web_api = executors.submit(web_runner)
+            drone_engine = executors.submit(drone_runner)
 
-    main_thread.start()
-    api_thread.start()
+    except KeyboardInterrupt:
+        exit()
+    except:
+        raise

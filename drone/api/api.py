@@ -29,7 +29,3 @@ def update_task(job_id, schedule_time, status):
         return "Invalid status. Must be one of the following: %s" % 'failed, ready, not_ready, succeeded', 500
     update_job_status.get(status)(job_id, schedule_time_parsed, db_name=metadata)
     return '%s marked as %s for %s' % (job_id, status, schedule_time_parsed)
-
-
-if __name__ == '__main__':
-    api_app.run(debug=False, use_reloader=False, host=host_ip, port=port)
