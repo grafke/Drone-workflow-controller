@@ -24,7 +24,7 @@ The Drone scheduler executes your jobs on a remote resource (on EMR, EC2, or a r
     git clone https://github.com/grafke/Drone-workflow-controller
     cd Drone-workflow-controller
     # nano drone/config/settings.py #only if you really want to change something
-    python setup.py install
+    sudo python setup.py install
 
 Drone uses SQLite as persistent storage. 
 

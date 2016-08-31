@@ -7,7 +7,16 @@ from drone.utils.config_loader import get_config
 
 
 def string_to_iso_datetime(string):
-    return datetime.strptime(string.split('.')[0], "%Y-%m-%dT%H:%M:%S")
+    """
+    if string == '' return today
+
+    :param string: str
+    :return: datetime.datetime
+    """
+    if string:
+        return datetime.strptime(string.split('.')[0], "%Y-%m-%dT%H:%M:%S")
+    else:
+        return datetime.strptime(datetime.today().isoformat().split('T')[0], "%Y-%m-%d")
 
 
 def parse_schedule_time(input_string, schedule_time):

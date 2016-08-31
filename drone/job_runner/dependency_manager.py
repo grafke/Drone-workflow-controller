@@ -22,7 +22,7 @@ dependency_is_met = {'job_completed': check_job_dependency}
 
 
 def dependencies_are_met(job_config, schedule_time, settings):
-    delay_minutes = int(job_config.get('delay_minutes'))
+    delay_minutes = int(job_config.get('delay_minutes') or 1440)
     if string_to_iso_datetime(schedule_time) + timedelta(minutes=delay_minutes) >= datetime.now():
         return False
 

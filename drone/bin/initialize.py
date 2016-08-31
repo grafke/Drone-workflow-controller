@@ -17,7 +17,7 @@ def sync_job(job_config, settings):
                                                              job_config_start_datetime.strftime('%H:%M:%S'))
 
         delta_schedule_seconds = (job_schedule_datetime_end - job_schedule_datetime_start).days * 1440
-        job_schedule_interval_minutes = int(job_config.get('interval_minutes'))
+        job_schedule_interval_minutes = int(job_config.get('interval_minutes') or 60)
         job_schedule = [
             (job_schedule_datetime_start + datetime.timedelta(
                 minutes=i * job_schedule_interval_minutes)).isoformat()

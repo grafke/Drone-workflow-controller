@@ -1,28 +1,15 @@
 remote_servers = {
-    'lc01': {
+    'example': {
         'ssh_details': {
             'username': '',
             'password': '',
             'ssh_key': '',
-            'host': ''
+            'host': 'localhost'
         },
         'logging': {
-            'stdout_log_dir': '/tmp/',
-            'stderr_log_dir': '/tmp/',
-            'pid_file_dir': '/tmp/'
-        }
-    },
-    'back01': {
-        'ssh_details': {
-            'username': '',
-            'password': '',
-            'ssh_key': '',
-            'host': ''
-        },
-        'logging': {
-            'stdout_log_dir': '/tmp/',
-            'stderr_log_dir': '/tmp/',
-            'pid_file_dir': '/tmp/'
+            'stdout_log_dir': '/tmp/example.stdout.log',
+            'stderr_log_dir': '/tmp/example.stderr.log',
+            'pid_file_dir': '/tmp/example.pid'
         }
     }
 }
