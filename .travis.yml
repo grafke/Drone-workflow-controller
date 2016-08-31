@@ -11,4 +11,4 @@ install:
   - sudo pip install -r requirements.txt
   - sudo python setup.py -q install
 script:
-  - nosetests
+  - sudo nosetests
