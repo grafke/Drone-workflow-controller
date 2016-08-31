@@ -1,7 +1,6 @@
 import os
 from time import sleep
 from unittest import TestCase
-
 from drone.bin.initialize import sync_jobs
 from drone.job_runner.job_runner import process
 from drone.metadata.metadata import initialize_db, read_all_jobs, set_ready, execute_db

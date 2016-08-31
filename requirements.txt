@@ -2,4 +2,4 @@ Flask
 setuptools
 boto3
 flask-cors
-concurrent
+futures
