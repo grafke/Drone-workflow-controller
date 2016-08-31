@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/grafke/Drone-workflow-controller.svg?branch=master)](https://travis-ci.org/grafke/Drone-workflow-controller)
+
 # Drone
 
 Drone is a platform to schedule and monitor workflows.
